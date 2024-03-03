@@ -4,7 +4,7 @@ from PyQt5.QtGui import QColor
 
 import openai
 
-openai.api_key = "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"
+openai.api_key = "#API-KEY#"
 
 messages = [{"role": "system", "content": "You are the smartest AI on earth"}]
 
