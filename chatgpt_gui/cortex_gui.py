@@ -4,7 +4,7 @@ from PyQt5.QtGui import QColor
 
 import openai
 
-openai.api_key = "##"
+openai.api_key = "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"
 
 messages = [{"role": "system", "content": "You are the smartest AI on earth"}]
 
@@ -44,6 +44,9 @@ class ChatApp(QWidget):
     def send_message(self):
         user_input = self.user_entry.toPlainText().strip()
         if user_input:
+            # Clear the chat history before appending new messages
+            self.chat_display.clear()
+
             messages.append({"role": "user", "content": user_input})
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
@@ -55,6 +58,7 @@ class ChatApp(QWidget):
             self.chat_display.append("AI Assistant: " + ChatGPT_reply)
             self.chat_display.append("-----------------------------------------")
             self.user_entry.clear()
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
